@@ -60,8 +60,14 @@ Cree las rutas a continuación de la manera más eficiente posible usando la val
 6. **Escribir una respuesta corta en README.md**. En su `README.md` escriba una respuesta corta a las siguientes preguntas:
 
     - ¿Usó el mismo tipo de ruta para actualizar la información del paciente y para actualizar un departamento de empleados?
+       No, `PUT` para el primero y `PATCH` para el segundo.
     - ¿Por qué eligió la estrategia que eligió?
+      `PUT` cuando las actualizaciones que realizamos en nuestra aplicación requieren modificar múltiples campos de un registro y `PATCH` es adecuado para actualizaciones parciales donde sólo algunos campos necesitan ser modificados. Esto ahorra ancho de banda y reduce la carga en el servidor al manejar menos datos
     - ¿Cuáles son las ventajas e inconvenientes de las estrategias que eligió para crear estas rutas?
+      `PUT` puede ser menos eficiente si solo se necesita actualizar una pequeña parte de la información del paciente.
+      `PATCH`, al ser utilizado para pequeñas actualizaciones, requiere que el backend maneje correctamente las actualizaciones parciales, lo que puede aumentar la complejidad del código.
     - ¿Cuáles son los compromisos entre `PUT` y `PATCH`?
+      `PUT`: Es idempotente, lo que significa que realizar la misma operación repetidamente produce el mismo estado del recurso. Es ideal cuando se actualiza o reemplaza un recurso completo porque asegura que todos los campos necesarios estén especificados, evitando dejar campos inadvertidamente en un estado no deseado.
+      `PATCH`: Es adecuado para actualizaciones parciales donde sólo algunos campos necesitan ser modificados. Esto ahorra ancho de banda y reduce la carga en el servidor al manejar menos datos, pero requiere lógica adicional para asegurar que sólo los campos especificados se actualicen, manteniendo los demás intactos.
 
 <br>
